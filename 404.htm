@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="desc of webste">
+    <meta name="keywords" content="search keywords">
+    <title>&nbsp;</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body onresize="screensize()">
+  <noscript>
+    <div style="position: fixed; top: 0px; left: 0px; z-index: 3000; height: 100%; width: 100%; background-color: #FFFFFF">
+      <p align="center" style="margin-left: 10px; font-size: 25px;">This website requires JavaScript, please enable it.</p>
+      <p align="center"><a href="http://www.google.com/search?q=enable+javascript">Click on this link to learn how to enable Javascript.</a></p>
+    </div>
+  </noscript>
+
+<div class="wrapper">
+<!-- ---------------------------------  breadcrumb -->
+  <div class="crumb"> <a href="/index.htm">Home</a> 
+    <span class="size_85_percent">&#10095;</span> 
+
+</div> <!-- End main breadcrumb div-->
+
+<div class="main">
+
+<p>The page are you tying to view no longer exists. Use the link above to go back to the home page</p>
+</div><!--  - - - - - - - - - - - - - - - - - - - End of the main body  - - - -  -->
+
+
+
+</body>
+
+</html>
+
+
+<script>
+var $url=window.location.href;
+var $local_match_var = "www_vang";
+var $found_match = $url.indexOf($local_match_var);
+var $text_notes='<a href="notes/notes.htm"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </a>';
+
+if ($found_match > 0) { //If viewing files locally
+
+  $text_notes='<a href="notes/notes.htm">&nbsp; &nbsp; &nbsp; Notes &nbsp; &nbsp; &nbsp;</a>';
+
+} 
+
+var last_modified = document.lastModified;
+
+document.getElementById("notes").innerHTML = $text_notes;
+
+document.getElementById("lastupdated").innerHTML = "Last modified : " + last_modified + '<br /> ' ;
+
+// display the screen size on the home page
+var y =  window.innerWidth;
+document.getElementById("display_screen").innerHTML=  y ;
+
+  </script>

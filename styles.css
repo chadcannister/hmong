@@ -1,0 +1,710 @@
+@charset "UTF-8";
+   :root {
+  --bg: #171a1c;
+  --panel: #262c2f;
+  --menu: #282828;
+  --border: #1a1a1a;
+  --text: #e4e7ea;
+  --heading: #e6e6e6;
+  --link: #389cff;
+  --link-hover: #20a8d8;
+  --tree-line: #8d8d8d;
+  --toggle-bg: #171a1c; /* box with plus sign background color*/
+  --toggle-border: #fff;
+  --toggle-text: #fff;
+  --toggle-size: 18px; /* box with plus sign box size*/
+  --toggle-gap: 5px; /* space between nav link and connector line*/
+}
+
+html,
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, "Noto Sans", sans-serif;
+  font-size: 0.98rem;
+  margin: 0;
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+}
+
+a:hover,
+.left_nav_list label:hover {
+  color: var(--text);
+}
+
+h1 { font-size: 130%; }
+h2 { font-size: 120%; }
+h3 { font-size: 115%; }
+h4 { font-size: 110%; }
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--heading);
+  display: inline;
+}
+
+.wrapper {
+  width: 100%;
+}
+
+.crumb {
+  background-color: var(--panel);
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  margin: 0;
+  padding: 10px 10px 10px 25px;
+
+  display: flex;
+  align-items: center;
+
+  width: 98%;
+}
+
+.crumb-right {
+  margin-left: auto;
+
+  display: flex;
+  align-items: center;
+}
+
+.crumb a {
+  color: var(--text);
+  margin-right: 8px;
+}
+
+.crumb a:hover {
+  color: var(--link-hover);
+}
+
+.left_nav_div,
+.main {
+  box-sizing: border-box;
+  float: left;
+}
+
+.left_nav_div {
+  padding: 0 30px 5px 10px;
+  width: 25%;
+}
+
+.main {
+  background-color: var(--bg);
+  border: 1px solid var(--border);
+  margin-top: 25px;
+  padding: 0 15px 15px 20px;
+  max-width: 700px;
+  width: 75%;
+}
+
+.menubar {
+  align-items: center;
+  background: var(--menu);
+  border-bottom: 1px solid #222;
+  box-sizing: border-box;
+  color: #fff;
+  display: flex;
+  font-size: 80%;
+  height: 25px;
+  padding: 0px;
+  width: 100px;
+}
+
+#menu-toggle,
+.left_nav_list input[type="checkbox"] {
+  display: none;
+}
+
+.toggle-btn,
+.left_nav_list label {
+  cursor: pointer;
+  padding: 0px 0px 0px 16px;
+}
+
+#menu-toggle:checked ~ .left_nav_links {
+  display: block;
+}
+
+.left_nav_links {
+  margin-top: 10px;
+}
+
+.left_nav_list,
+.left_nav_sub_list {
+  list-style: none;
+  margin: 2px;/* sub menu move entire sub nav with line connector*/
+  padding-left: 6px;/* sub menu move entire sub nav with line connector*/
+  position: relative;
+}
+
+.left_nav_sub_list {
+  display: none;
+  margin-left: 22px;
+  padding-left: 14px;
+}
+
+.left_nav_list input[type="checkbox"]:checked + label + .left_nav_sub_list {
+  display: block;
+}
+
+.left_nav_list li,
+.left_nav_sub_list li {
+  padding-left: 6px;
+  padding-top: 6px; /* spacing  between links*/
+  position: relative;
+}
+
+.left_nav_list li::before,
+.left_nav_sub_list li::before {
+  background: var(--tree-line);
+  content: "";
+  height: 100%;
+  left: 8px;
+  position: absolute;
+  top: 0;
+  width: 1px;
+}
+
+.left_nav_list li::after,
+.left_nav_sub_list li::after {
+  background: var(--tree-line);
+  content: "";
+  height: 1px;
+  left: 8px;
+  position: absolute;
+  top: 13px;
+  width: 12px;
+}
+
+.left_nav_list li:last-child::before,
+.left_nav_sub_list li:last-child::before {
+  height: 14px;
+}
+
+.left_nav_list a,
+.left_nav_list label {
+  align-items: center;
+  color: var(--link);
+  display: inline-flex;
+  gap: var(--toggle-gap);
+  padding-left: 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* Reserve the same space for regular links so all text aligns. */
+.left_nav_list a::before {
+  background: transparent;
+  content: "";
+  display: inline-block;
+  flex: 0 0 var(--toggle-size);
+  height: var(--toggle-size);
+  width: var(--toggle-size);
+}
+
+/* Solid toggle box: only submenu labels get the visible plus/minus box. */
+.left_nav_list label .nav_menu_box {
+  background-color: var(--toggle-bg);
+  border: 1px solid var(--toggle-border);
+  box-sizing: border-box;
+  color: var(--toggle-text);
+  display: inline-block;
+  flex: 0 0 var(--toggle-size);
+  font-size: 12px;
+  height: var(--toggle-size);
+  line-height: calc(var(--toggle-size) - 2px);
+  opacity: 1;
+  position: relative;
+  text-align: center;
+  width: var(--toggle-size);
+  z-index: 2;
+}
+
+.left_nav_list label .nav_menu_box::before {
+  content: "+";
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.left_nav_list input[type="checkbox"]:checked + label .nav_menu_box::before {
+  content: "−";
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/*end left nav  */
+
+/* start topic_menu_tree */
+ul.topic_menu_tree,
+ul.topic_menu_tree ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+}
+
+ul.topic_menu_tree {
+  padding-left: 16px;
+}
+
+ul.topic_menu_tree ul {
+  margin-left: 8px;
+  padding-left: 28px;
+  border-left: 1px solid #a1a1a1;
+}
+
+ul.topic_menu_tree li {
+  position: relative;
+  padding-left: 2px; /* change how far text link is next to line on left */
+  margin: 0;
+  padding-bottom: 6px;
+}
+
+/* horizontal connector lines */
+ul.topic_menu_tree li::before {
+  content: "";
+  position: absolute;
+  top: 0.75em;
+  left: -28px;
+  width: 18px; /* change line length */
+  height: 1px;
+  background: #a1a1a1;
+}
+
+/* remove root connector if desired */
+ul.topic_menu_tree > li::before {
+  left: -18px;
+  width: 18px;
+}
+
+/* stop vertical line after the last item */
+ul.topic_menu_tree ul li:last-child::after {
+  content: "";
+  position: absolute;
+  left: -29px;
+  top: calc(0.75em + 1px);
+  width: 1px;
+  height: 100%;
+  background: #171a1c;
+}
+
+/* end topic_menu_tree */
+
+.foot { 
+    float: left;
+    padding: 0px 15px 15px 20px;
+    width: 100%;
+  }
+
+
+/* start auio player styles */
+.audio_single { /* was previously button_text */
+  background-color: #20a8d8; 
+  border: 1px solid #0f7194; 
+  border-radius: 3px;
+  color: white;
+  padding-top: 4px;
+  padding-right: 9px;
+  padding-bottom: 4px;
+  padding-left: 9px;
+  margin: 5px;
+  margin-left: 0px;
+  margin-right: 0px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 100%;
+}
+
+.audio_single:hover {
+  background-color: rgb(216, 216, 216); 
+  color: #425b74;
+  border: 1px solid rgb(161, 161, 161); 
+  box-shadow: 3px 3px 5px #b3b3b3;
+}
+
+/* start audio rewind play pause forward  */
+
+.audio_control_buttons { /* was previously button_phrases*/
+  background-color: #20a8d8; 
+  border: 1px solid #0f7194; 
+  border-radius: 3px;
+  color: white;
+  padding-top: 4px;
+  padding-right: 9px;
+  padding-bottom: 4px;
+  padding-left: 9px;
+  margin: 5px;
+  margin-left: 0px;
+  margin-right: 0px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 100%;
+}
+
+.audio_control_buttons:hover {
+  background-color: rgb(216, 216, 216); 
+  color: #425b74;
+  border: 1px solid rgb(161, 161, 161); 
+  box-shadow: 3px 3px 5px #b3b3b3;
+}
+
+/* end audio rewind play pause forward  */
+
+/* start audio player box  */
+
+.player-container {
+    background-color: #303030;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    display: inline-block;
+    padding-top: 0px;
+    padding-left: 5px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    width: 390px;
+ }
+ 
+.timeline {
+    width: 100%;
+    background: #ddd;
+    height: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    background: #FFF;
+}
+
+.progress {
+    width: 0%;
+    background: #4CAF50;
+    height: 5px;
+    border-radius: 5px;
+ }
+ 
+.audio_time_line {
+    width: 100%;
+    background: #FFF;
+    height: 5px;
+    border-radius: 5px;
+ }
+
+.audio_time_row:after {
+  content: "";
+  display: table;
+  clear: both;
+  width: 100%;
+}
+
+.audio_time_column_l {
+  float: left;
+  width: 50%;
+}
+
+.audio_time_column_r {
+  float: left;
+  width: 50%;
+  text-align: right;
+}
+
+.blinking-text {
+  color: red;
+  font-weight: bold;
+  animation: blink 1s infinite;
+}
+
+ /* Style all audio control buttons */
+  .controls button {
+    padding: 8px 14px;
+    margin: 2px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+
+    /* Unified color scheme */
+    background-color: #007bff; /* Blue */
+    color: white;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+  }
+
+  /* Hover and active effects */
+  .controls button:hover {
+    background-color: #0056b3; /* Darker blue */
+  }
+
+  .controls button:active {
+    transform: scale(0.97);
+  }
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* end audio player box  */
+
+/* audio button for test quizz */
+
+
+.button_test_large {
+  background-color: #007acc;
+  border: 1px solid #5b84a5; 
+   border-radius: 5px;
+  color: white;
+  padding: 28px 40px;
+  margin: 8px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  font-size: 160%;
+}
+
+.button_test_large:hover {
+    background-color: #4e84b1; 
+    border: 1px solid #white;
+}
+
+.button_show_answer {
+  background-color: #000;
+  border: 1px solid #eab82e; 
+   border-radius: 8px;
+  color: #eab82e;
+  padding: 15px 20px;
+  margin: 5px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  font-size: 230%;
+}
+/* end audio button for test quizz */
+
+/* end auio player styles */
+
+.text-red { color: #f63c3c; }
+
+.text-blue { color: #20a8d8; }
+
+.text-blue2 { color: #20a8d8; }
+
+.text-green { color: #4dbd74; }
+
+.text-green2 { color: #779933; }
+
+.text-yellow { color: #ffc107; }
+
+.text-orange { color: #e69704; }
+
+.text-link { color: #4d94ff; }
+
+.text-grey { color: #aaaaaa; }
+
+.text-dark-grey { color: #535353; }
+
+.text-purple {color: #bb86fc;}
+
+.text-turquoise   {color: #59ac90;}
+
+.text-beige   {color: #ffcda2;}
+
+.text-tan   {color: #d2b48c;}
+
+.text-olive   {color: #94964b;}
+
+.text-brown   {color: #a76e5d;}
+
+.text-rustic   {color: #a05220;}
+
+
+
+.hierarchy_connect_lines,
+.hierarchy_connectsub__lines {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+  position: relative;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.hierarchy_connectsub__lines {
+  display: block;
+  margin-left: 3px;
+  padding-left: 2px;
+}
+
+/* One vertical line per UL keeps the connector from running through nested groups. */
+.hierarchy_connect_lines::before,
+.hierarchy_connectsub__lines::before {
+  background: var(--tree-line);
+  content: "";
+  left: 8px;
+  position: absolute;
+  top: 0;
+  bottom: calc(100% - 12px);
+  width: 1px;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.hierarchy_connect_lines li,
+.hierarchy_connectsub__lines li {
+  line-height: 1.35;
+  margin: 6px 0;
+  padding-left: 15px;
+  position: relative;
+  
+}
+
+/* Horizontal branch from the vertical line to each item. */
+.hierarchy_connect_lines li::before,
+.hierarchy_connectsub__lines li::before {
+  background: var(--tree-line);
+  content: "";
+  height: 1px;
+  left: 8px;
+  position: absolute;
+  top: 0.7em;
+  width: 12px;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* remove connector lines from first/root item */
+.hierarchy_connect_lines > li::before {
+  display: none;
+}
+
+/* remove the top/root vertical line */
+.hierarchy_connect_lines::before {
+  display: none;
+}
+
+ul.menu_tab {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  
+}
+
+ul.menu_tab li {
+  float: left;
+  margin: 3px;
+}
+
+ul.menu_tab li a {
+  display: block;
+  color:  white;
+  text-align: center;
+  padding: 10px 25px 10px 25px;
+  text-decoration: none;
+  background-color: #20a8d8; 
+  border-radius: 8px 8px 0px 0px;
+}
+
+ul.menu_tab li a:hover {
+  background-color: rgb(216, 216, 216); 
+  color: black;
+}
+
+
+  .line { background-color: #4d4d4d;
+    width: 100% ;
+    padding-bottom: 0px;
+    border-bottom: 1px solid #4d4d4d;
+   }
+   
+   .line_red { background-color: #f63c3c;
+      width: 100% ;
+      padding-bottom: 0px;
+      border-bottom: 1px solid #4d4d4d;
+     }
+   
+   .line_blue { background-color: #4d94ff;
+      width: 100% ;
+      padding-bottom: 0px;
+      border-bottom: 1px solid #4d94ff;
+     }
+    
+   .line_green { background-color: #4dbd74;
+      width: 100% ;
+      padding-bottom: 0px;
+      border-bottom: 1px solid #4dbd74;
+     }
+     
+   .line_yellow { background-color: #ffc107;
+      width: 100% ;
+      padding-bottom: 0px;
+      border-bottom: 1px solid #ffc107;
+     }
+
+   .line_orange { background-color: #ec8f33;
+      width: 100% ;
+      padding-bottom: 0px;
+      border-bottom: 1px solid #ec8f33;
+     }
+
+
+    .full_audio_width {
+      width: 100%;
+      }
+     
+     /* Original With style for full audio acros page  */
+    .broken-width {
+      width: 100%;
+      }
+
+/****  start media styles for Mobile Media Change the size width etc.. .based on the screen size **/
+
+@media screen and (max-width: 650px) { /****   Media 650px ################### **/
+  .main { grid-area: main; 
+    width: 98%;
+  }
+  .left_nav_div { 
+      width: 96%;
+      padding: 0px 5px 0px 10px;
+      border-bottom: #394247 solid 1px;
+    }
+    .left_nav_links {
+    display: none;
+  }
+
+  #menu-toggle:checked ~ .left_nav_links {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 420px) { /****   Media 420px ################### **/
+  .main { grid-area: main; 
+    width: 415px;
+  }
+
+  .wrapper {
+    display: grid;
+    grid-template-areas:
+      "crumb"
+      "left_nav"
+      "main"
+      "foot";
+    grid-gap: 0px;
+    padding: 0px;
+    height: fit-content;
+  }
+
+  .crumb { padding: 5px 10px 5px 15px;}
+
+} /****  End Media 412px ################### **/
+
+
+
+
+ 

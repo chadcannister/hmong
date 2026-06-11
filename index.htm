@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="desc of webste">
+    <meta name="keywords" content="search keywords">
+    <title>&nbsp;</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body onresize="screensize()">
+  <noscript>
+    <div style="position: fixed; top: 0px; left: 0px; z-index: 3000; height: 100%; width: 100%; background-color: #FFFFFF">
+      <p align="center" style="margin-left: 10px; font-size: 25px;">This website requires JavaScript, please enable it.</p>
+      <p align="center"><a href="http://www.google.com/search?q=enable+javascript">Click on this link to learn how to enable Javascript.</a></p>
+    </div>
+  </noscript>
+
+<div class="wrapper">
+<!-- ---------------------------------  breadcrumb -->
+  <div class="crumb"> <a href="index.htm">Home</a> 
+    <span class="size_85_percent">&#10095;</span> 
+
+</div> <!-- End main breadcrumb div-->
+
+<div class="main">
+
+  <ul class="topic_menu_tree" style="border-left: none">
+    <li><h3>Home Page</h3></li>
+    <ul id="link_common" class="menu_tree show"> 
+      <li><a href="common/common.htm">common items, terms, phrases & etiquette</a> </li>
+      <li><a href="funeral/funeral.htm">funerals - kaab mo kev tuag</a> <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="paajqeeg/paajqeeg.htm">paag qeeg</a> <sup style="font-size: 60%; color: #ffc107;">new</sup><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="txivxaiv/txivxaiv.htm">txiv xaiv</a> <sup style="font-size: 60%; color: #ffc107;">new</sup>
+
+      </li>
+      <li><a href="handtying/handtying.htm">hand tying - khi teg</a> </li>
+      <li><a href="healing/healing.htm">healing - ua neeb ua yaig, khaw koob</a> </li>
+      <li><a href="household/household.htm">household - ua dlaab ua qhua huv tsev</a> </li>
+      <li><a href="huplig/huplig.htm">hu plig</a> </li>
+      <li><a href="other/other.htm">other ceremonies & events</a> </li>
+      <li><a href="qeej/qeej.htm">qeej</a> </li>
+      <li><a href="tusub/tusub.htm">tu sub</a> </li>
+      <li><a href="wedding/wedding.htm">wedding - ua tshoob ua kus</a> </li>
+      <li><a href="readwrite/readwrite.htm">read & write in hmong</a> </li>
+      <li><a href="class/class.htm">class sessions</a> </li>
+      <li><a href="test/test.htm">future page template</a> </li>
+    </ul>
+  </ul>
+<p>
+<h3>Contact Information</h3><br />
+&nbsp;&nbsp;<span style="color :#a8a8a8";>Inform the website administrator of any issues.<br />
+&nbsp;&nbsp;comments or suggestions. <br />
+&nbsp;&nbsp;chaovang@gmail.com</span>
+</p>
+
+<p><h3>Useful References</h3><br />
+&nbsp;&nbsp;<a href="http://hmongdictionary.us/" target="_blank">hmongdictionary</a><br />
+&nbsp;&nbsp;<a href="http://www.hmongdictionary.com/" target="_blank">hmongdictionary</a><br />
+
+<p style="color :#636363;"><span id="paagvwg"></span> <br>
+    <span></span>Viewing page at screen size  
+    <span id="display_screen">&nbsp;</span> <br>
+    This site is optimized for your screen.
+    
+    <span id="notes"></span>
+</p>
+<p style="color :#5f5f5f;" id="lastupdated"></p>
+<span style="height: 90px; width: 200px; ">
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <br>
+  <a href="notes/notes.htm" style="color: #171a1c; "> 
+  
+    Haam Choj Notes, items that <br>need to be documented<br>
+</a>
+</span>
+</div><!--  - - - - - - - - - - - - - - - - - - - End of the main body  - - - -  -->
+
+
+
+</body>
+
+</html>
+
+
+<script>
+var $url=window.location.href;
+var $local_match_var = "www_vang";
+var $found_match = $url.indexOf($local_match_var);
+var $text_notes='<a href="notes/notes.htm"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </a>';
+
+if ($found_match > 0) { //If viewing files locally
+
+  $text_notes='<a href="notes/notes.htm">&nbsp; &nbsp; &nbsp; Notes &nbsp; &nbsp; &nbsp;</a>';
+
+} 
+
+var last_modified = document.lastModified;
+
+document.getElementById("notes").innerHTML = $text_notes;
+
+document.getElementById("lastupdated").innerHTML = "Last modified : " + last_modified + '<br /> ' ;
+
+// display the screen size on the home page
+var y =  window.innerWidth;
+document.getElementById("display_screen").innerHTML=  y ;
+
+  </script>
