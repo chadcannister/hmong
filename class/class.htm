@@ -1,1 +1,600 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Class sessions</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      font-family: Arial, Helvetica, sans-serif;
+    }
 
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #f4f6fb;
+      color: #111827;
+    }
+
+    body.locked {
+      overflow: hidden;
+    }
+
+    #authScreen {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: linear-gradient(135deg, #eef2ff, #f8fafc);
+    }
+
+    .auth-card {
+      width: min(420px, 100%);
+      padding: 32px;
+      border-radius: 20px;
+      background: #ffffff;
+      box-shadow: 0 20px 60px rgba(15, 23, 42, 0.16);
+    }
+
+    .auth-card h1 {
+      margin: 0 0 8px;
+      font-size: 1.75rem;
+    }
+
+    .auth-card p {
+      margin: 0 0 20px;
+      color: #4b5563;
+      line-height: 1.5;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    input[type="password"] {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      font-size: 1rem;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 16px;
+      padding: 12px 16px;
+      border: 0;
+      border-radius: 10px;
+      background: #2563eb;
+      color: #ffffff;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      opacity: 0.7;
+      cursor: wait;
+    }
+
+    #authMessage {
+      min-height: 1.4em;
+      margin-top: 14px;
+      font-size: 0.95rem;
+      color: #374151;
+    }
+
+    #protectedContent {
+      display: none;
+      min-height: 100vh;
+      padding: 0px;
+    }
+
+    .content-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 32px;
+      border-radius: 20px;
+      background: #ffffff;
+      box-shadow: 0 12px 40px rgba(15, 23, 42, 0.08);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body {
+        background: #0f172a;
+        color: #e5e7eb;
+      }
+
+      #authScreen {
+        background: linear-gradient(135deg, #111827, #1e293b);
+      }
+
+      .auth-card,
+      .content-wrap {
+        background: #111827;
+      }
+
+      .auth-card p,
+      #authMessage {
+        color: #cbd5e1;
+      }
+
+      input[type="password"] {
+        background: #0f172a;
+        color: #e5e7eb;
+        border-color: #334155;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="locked">
+  <noscript>
+    <div style="position: fixed; top: 0px; left: 0px; z-index: 3000; height: 100%; width: 100%; background-color: #FFFFFF">
+      <p align="center" style="margin-left: 10px; font-size: 25px;">This website requires JavaScript, please enable it.</p>
+      <p align="center"><a href="http://www.google.com/search?q=enable+javascript">Click on this link to learn how to enable Javascript.</a></p>
+    </div>
+  </noscript>
+<div class="wrapper">
+<!-- -start  breadcrumb -->
+<div class="crumb"> 
+    <div><a href="../index.htm">home</a> &#10095;&nbsp;
+         <a href="class.htm">class</a> &#10095;&nbsp;
+    </div>
+    <div class="crumb-right">
+    <a href="logout.htm">Log Out&nbsp;&nbsp;</a> 
+    </div>
+</div> 
+<!-- End main breadcrumb div-->
+
+  <main id="authScreen" aria-live="polite">
+    <section class="auth-card" aria-labelledby="authTitle">
+<br>
+      <h3>Enter the pass code to access the page</h3>
+      <br><br>
+      <a href="../index.htm">&#11013; Go back to home page</a>
+      <br><br>
+
+      <form id="authForm" autocomplete="off">
+        <input id="authPassword" name="password" type="password" required autofocus />
+        <button id="authButton" type="submit">submit</button>
+        <div id="authMessage">Waiting for password.</div>
+      </form>
+      <p>&nbsp;</p>
+      <p><a href="template.htm">check session</a></p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p style="color: #374151;">opening this file locally will bypass the login</p>
+    </section>
+  </main>
+
+  <main id="protectedContent" aria-hidden="true">
+
+<!-- Start main Div, main body -->
+<div class="main">
+
+<h3>Class Session Recordings</h3>
+<br />
+  <br /><br />
+
+<table width='100%'>
+  <tr>
+    <td width='25%'>&nbsp;</td>
+    <td width='100px'><a href="https://docs.google.com/spreadsheets/d/1WN59LrZyy_7K4VqsVc4OF2n6S9zZS4tqR0tNf66_WVo/edit#gid=0" target="_new">
+        Every student who has attended at least one class session</a></td>
+  </tr>
+  <tr>
+    <td width='25%'>&nbsp;</td>
+    <td width='100px'><a href="https://docs.google.com/spreadsheets/d/1pdy1-1eA_37qid1797byJA-owKv-NEG5xbx1rslYsVI/edit?usp=sharing" target="_new">
+        Every Website donationn</a></td>
+  </tr>
+</table>
+
+
+<table cellpadding="10">
+
+<tr>
+    <td style="vertical-align: top;"><a href="template.htm"> Template</a> </td>
+    <td>
+    </td>
+</tr>
+
+<tr>
+    <td style="vertical-align: top;"><a href="#"> Future Topic</a> </td>
+    <td>Nyuj Dlaab
+    </td>
+</tr>
+
+<tr>
+    <td style="vertical-align: top;"><a href="240310_huplig.htm"> 03/10/2024</a> </td>
+    <td>Hu Plig
+    </td>
+</tr>
+
+<tr>
+    <td style="vertical-align: top;"><a href="240211_fiv_pauj_yeem.htm"> 02/11/2024</a> </td>
+    <td>Fiv & Pauj Yeem 
+    </td>
+</tr>
+
+<tr>
+    <td style="vertical-align: top;"><a href="240121_xiwm_tso_plig.htm"> 01/21/2024</a> </td>
+    <td>Funeral : Xiw Q & A, Tso Plig 
+    </td>
+</tr>
+
+<tr>
+    <td style="vertical-align: top;"><a href="230910_xiwm.htm"> 09/10/2023</a> </td>
+    <td>Funeral : Xiw
+    </td>
+</tr>
+
+<tr>
+    <td style="vertical-align: top;"><a href="230430_thawv_paajqeeg_kauj.htm"> 07/27/2023</a> </td>
+    <td>Funeral : One on One phone call with Instructor, Q & A about Cuab Tsaav
+        <br>
+        Times and Event Cuab Tsaav needs to do his job. <br>
+        Order of when its done and a new ending phrase 
+
+    </td>
+</tr>
+
+<tr>
+    <td style="vertical-align: top;"><a href="230430_thawv_paajqeeg_kauj.htm"> 04/30/2023</a> </td>
+    <td>Funeral : 	Lwm Thawv, Xaab Thawv, Xwm Thawv and other thawv <br>
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+    no more relative to full fill a position <br>
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+    Paaj Qeeg & Zaaj Nkauj <br>
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+    Tsaug Mo <br>
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+    txheeb saw lub rooj <br>
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+    phim khub cov ua num
+    <br>
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+    Txiv Npawg
+
+    </td>
+</tr>
+
+<tr>
+    <td style="vertical-align: top;"><a href="230409_cuab_tsaav_kaav_xiwm.htm"> 04/09/2023</a> </td>
+    <td>Funeral : Q & A on Kaav Xiwm & Cuab Tsaav
+
+
+    </td>
+</tr>
+
+<tr>
+    <td style="vertical-align: top;"><a href="230319_kaav_xiwm.htm"> 03/19/2023</a> </td>
+    <td>Funeral : Kaav Xiwm positin and details</td>
+</tr>
+
+<tr>
+    <td style="vertical-align: top;"><a href="230108_cuab_tsaav.htm"> 01/08/2023</a> </td>
+    <td>Funeral : Cuab Tsaav positin and details</td>
+</tr>
+
+<tr>
+    <td style="vertical-align: top;"><a href="221204_funeral_order_tasks.htm"> 12/04/2022</a> </td>
+    <td>Funeral : Order of Events and Tasks</td>
+</tr>
+<tr>
+    <td style="vertical-align: top;"><a href="221106_funeral_positions.htm">11/06/2022</a> </td>
+    <td>Funeral : Positions & duties</td>
+</tr>
+<tr>
+    <td style="vertical-align: top;"><a href="221016_first_steps.htm">10/16/2022</a> </td>
+    <td>Funeral : What to do when someone has passes away. <br>
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+    Items needed, the drum  <br>
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+    giving funeral clothing to parents 
+
+</td>
+</tr>
+<tr>
+    <td style="vertical-align: top;"><a href="221002_wedding_positions_txwwj_tso_tub_yug.htm">10/02/2022</a> </td>
+    <td>Wedding : positions, txwj tub yug, tso tub yug</td>
+</tr>
+<tr>
+    <td style="vertical-align: top;"><a href="220918_wedding_positions_item_needed.htm">09/18/2022</a> </td>
+    <td>Wedding : positions, items needed, asking someone to fullfill a position</td>
+</tr>
+<tr>
+    <td style="vertical-align: top;"><a href="220807_lwm_qab_thoob_xu.htm">08/07/2022</a> </td>
+    <td>Wedding : thoob xu process, steps and more details</td>
+</tr>
+<tr>
+    <td style="vertical-align: top;"><a href="220724_lwm_qab_thoob_xu1.htm">07/24/2022</a> </td>
+    <td>Wedding : more detail topcs, lwm qab and thoob Xu practice and discussion </td>
+</tr>
+<tr>
+    <td style="vertical-align: top;"><a href="220703_lwm_qab_thoob_xu.htm">07/03/2022</a> </td>
+    <td>Wedding : lwm qab practice and discussion</td>
+</tr>
+<tr>
+    <td style="vertical-align: top;"><a href="220626_students_meeting.htm">06/26/2022 <br> </a> </td>
+    <td>Students Only Meeting - wedding : lwm qab & thoob xu student experience</td>
+</tr>
+<tr>
+    <td style="vertical-align: top;"><a href="220522_lwm_qab_thoob_xu.htm">05/22/2022</a> </td>
+    <td>Wedding : lwm qab & thoob xu.</td>
+</tr>
+<tr>
+    <td><a href="220414_preclass_material.htm">04/14/2022 </a> </td>
+    <td>Pre-Meeting Materials</td>
+</tr>
+
+<tr>
+    <td style="vertical-align: top;"><a href="200216_wedding_review.htm">02/16/2020</a> </td>
+    <td>Wedding topics review : lwm qab, toob xu </td>
+</tr>
+<tr>
+    <td style="vertical-align: top;"><a href="200105_review_old_topics.htm">01/05/2020</a> </td>
+    <td>review old topics, Q & A, Intro to Weddings</td>
+</tr>
+<tr>
+    <td style="vertical-align: top;"><a href="191020_funeral_topics_review_old.htm">10/20/2019</a> </td>
+    <td>Funeral topics, review old topics, Q & A </td>
+</tr>
+<tr>
+    <td style="vertical-align: top;"><a href="190623_funeral.htm">06/23/2019</a> </td>
+    <td>Funeral</td>
+</tr>
+<tr>
+    <td style="vertical-align: top;"><a href="190526_funeral_phrases_verses.htm">05/26/2019</a> </td>
+    <td>Funeral phrases and verses </td>
+</tr>
+<tr>
+    <td style="vertical-align: top;"><a href="190428_funeral.htm">04/28/2019</a> </td>
+    <td>Funeral</td>
+</tr>
+<tr>
+    <td style="vertical-align: top;"><a href="190331_funeral.htm">03/31/2019</a> </td>
+    <td>Funeral</td>
+</tr>
+<tr>
+    <td style="vertical-align: top;"><a href="190310_ask_to_fill_position.htm">03/10/2019</a> </td>
+    <td>How to ask people to take on funeral positions, wedding topics </td>
+</tr>
+<tr>
+    <td style="vertical-align: top;"><a href="190217_xaiv_npe_laug.htm">02/17/2019</a> </td>
+    <td> xaiv npe laug, Loatian name chart </td>
+</tr>
+<tr>
+    <td style="vertical-align: top;"><a href="190127_xaiv_npe_laug.htm">01/27/2019</a> </td>
+    <td>xaiv npe laug</td>
+</tr>
+<tr>
+    <td style="vertical-align: top;"><a href="190106_xaiv_npe_laug.htm">01/06/2019</a></td>
+    <td>xaiv npe laug</td>
+</tr>
+<tr>
+    <td style="vertical-align: top;"><a href="181202_peb_caug.htm">12/02/2018</a></td>
+    <td>Peb Caug - tsaa Txhaj Meej hab Pem Xeeb, </td>
+</tr>
+<tr>
+    <td style="vertical-align: top;"><a href="181028_peb_caug.htm">10/28/2018</a></td>
+    <td>Peb Caug - Ntaus Kuam,chicken usage, history</td>
+</tr>
+<tr>
+    <td style="vertical-align: top;"><a href="181007_peb_caug_basics.htm">10/07/2018</a></td>
+    <td>Peb Caug - basics explained, Zaaj Hu Plig, Ntau Kuam, Xwm Kaab, history</td>
+</tr>
+<tr>
+    <td style="vertical-align: top;"><a href="180916_neeb.htm">09/16/2018</a></td>
+    <td>Neeb - Other types of Neeb, Txav Npua Tsua Txiv Neeb, cov fwj sawv / saib neeb</td>
+</tr>
+<tr>
+    <td style="vertical-align: top;"><a href="180819_ua_tsaug_neeb.htm">08/19/2018</a></td>
+    <td>ua tsaug neeb</td>
+</tr>
+<tr>
+    <td style="vertical-align: top;"><a href="180811_words_before_neeb.htm">08/11/2018</a></td>
+    <td> before the shaman starts the to ua neeb </td>
+</tr>
+<tr>
+    <td style="vertical-align: top;"><a href="180630_premeeting_files.htm">06/30/2018</a></td>
+    <td>Pre-Meeting Audio Files, ua neeb, saib neeb saib yaig, nchuav qai saib, nchuav qai,</td>
+</tr>
+<tr>
+    <td style="vertical-align: top;"><a href="180616_ua_neeg_ua_yaig.htm">06/16/2018</a></td>
+    <td>Ua Neeg Ua Yaig, Saib Neeb, Kev Pe</td>
+</tr>
+<tr>
+    <td style="vertical-align: top;"><a href="180512_1st_class.htm">05/12/2018</a></td>
+    <td>1st meeting </td>
+</tr>
+</table>
+   
+  </main>
+
+</div>
+<!-- End  Wrapper Div -->
+  <script>
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyVMvglCgBxpreaJ7ov8RMQTTWQ4HhI-o_lt-WHMsj_ajO-GSeCLaxkQ0i2Id__aZia/exec";
+
+    var AUTH_KEY = "site_authenticated";
+    var AUTH_EXPIRES_KEY = "site_authenticated_expires";
+    var ONE_DAY = 24 * 60 * 60 * 1000;
+    var pageInitialized = false;
+
+    function initializeProtectedPage() {
+      if (pageInitialized) {
+        return;
+      }
+
+      pageInitialized = true;
+
+      // Put any page-startup logic here. This function only runs after auth succeeds.
+      var appRoot = document.getElementById("appRoot");
+      if (appRoot) {
+        appRoot.textContent = "Your protected page logic can safely start here.";
+      }
+    }
+
+    function showPage() {
+      var authScreen = document.getElementById("authScreen");
+      var protectedContent = document.getElementById("protectedContent");
+
+      if (authScreen) {
+        authScreen.style.display = "none";
+        authScreen.setAttribute("aria-hidden", "true");
+      }
+
+      if (protectedContent) {
+        protectedContent.style.display = "block";
+        protectedContent.removeAttribute("aria-hidden");
+      }
+
+      document.body.classList.remove("locked");
+      initializeProtectedPage();
+    }
+
+    function showAuthScreen(message) {
+      var authScreen = document.getElementById("authScreen");
+      var protectedContent = document.getElementById("protectedContent");
+      var authMessage = document.getElementById("authMessage");
+
+      if (protectedContent) {
+        protectedContent.style.display = "none";
+        protectedContent.setAttribute("aria-hidden", "true");
+      }
+
+      if (authScreen) {
+        authScreen.style.display = "flex";
+        authScreen.removeAttribute("aria-hidden");
+      }
+
+      if (authMessage) {
+        authMessage.textContent = message || "Waiting for password.";
+      }
+
+      document.body.classList.add("locked");
+    }
+
+    function showError(message) {
+      showAuthScreen(message);
+    }
+
+    function confirmPassword(userInput, onSuccess, onFailure, onDone) {
+      var xhr = new XMLHttpRequest();
+
+      xhr.open(
+        "GET",
+        SCRIPT_URL + "?password=" + encodeURIComponent(userInput),
+        true
+      );
+
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState !== 4) {
+          return;
+        }
+
+        if (typeof onDone === "function") {
+          onDone();
+        }
+
+        if (xhr.status >= 200 && xhr.status < 300) {
+          try {
+            var data = JSON.parse(xhr.responseText);
+
+            if (data.success) {
+              onSuccess();
+            } else {
+              onFailure("Incorrect password.");
+            }
+          } catch (e) {
+            onFailure("Invalid server response.");
+          }
+        } else {
+          onFailure("Unable to verify password. Check your internet connection.");
+        }
+      };
+
+      xhr.onerror = function () {
+        if (typeof onDone === "function") {
+          onDone();
+        }
+        onFailure("Unable to verify password. Check your internet connection.");
+      };
+
+      xhr.send();
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      showAuthScreen("Waiting for password.");
+
+      // Bypass password validation when this page is opened locally from file:///
+      if (window.location.protocol === "file:" || window.location.href.indexOf("file:///") !== -1) {
+        var confirmedAt = new Date().getTime();
+
+        localStorage.setItem(AUTH_KEY, "true");
+        localStorage.setItem(AUTH_EXPIRES_KEY, String(confirmedAt + ONE_DAY));
+
+        showPage();
+        return;
+      }
+
+      var now = new Date().getTime();
+      var isAuthenticated = localStorage.getItem(AUTH_KEY) === "true";
+      var expires = Number(localStorage.getItem(AUTH_EXPIRES_KEY));
+
+      if (isAuthenticated && expires > now) {
+        showPage();
+        return;
+      }
+
+      localStorage.removeItem(AUTH_KEY);
+      localStorage.removeItem(AUTH_EXPIRES_KEY);
+
+      var authForm = document.getElementById("authForm");
+      var authPassword = document.getElementById("authPassword");
+      var authButton = document.getElementById("authButton");
+
+      authForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        var userInput = authPassword.value.trim();
+
+        if (!userInput) {
+          showError("Please enter a password.");
+          return;
+        }
+
+        authButton.disabled = true;
+        showAuthScreen("Authenticating... Please wait.");
+
+        confirmPassword(
+          userInput,
+          function () {
+            var confirmedAt = new Date().getTime();
+            localStorage.setItem(AUTH_KEY, "true");
+            localStorage.setItem(AUTH_EXPIRES_KEY, String(confirmedAt + ONE_DAY));
+            showPage();
+          },
+          showError,
+          function () {
+            authButton.disabled = false;
+          }
+        );
+      });
+    });
+  </script>
+
+  
+</body>
+</html>
