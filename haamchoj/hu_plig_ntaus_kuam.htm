@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="desc of webste">
+    <meta name="keywords" content="search keywords">
+    <title>&nbsp;</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<div class="wrapper">
+<!-- -start  breadcrumb -->
+<div class="crumb"> 
+    <a href="../index.htm">home</a> &#10095;&nbsp;
+    <a href="haamchoj.htm">haamchoj</a> &#10095;&nbsp; 
+</div> 
+<!-- End main breadcrumb div-->
+<!-- Start left Nav Menu -->
+<div class="left_nav_div">
+<!-- Start left nav menu Button -->
+<input id="menu-toggle" type="checkbox"/>
+<div class="menubar">
+  <label class="toggle-btn" for="menu-toggle"> ☰ Menu</label>
+</div>
+<!-- End left nav menu Button -->
+<!-- Start Left Nav links -->
+<div class="left_nav_links">
+  <ul class="left_nav_list">
+  <!-- Start level 1 Nav menu links -->
+  <li><a href="laig_dlaab_dad.htm">Laig Dlaab for Dad</a></li>
+  <li><a href="laig_dlaab.htm">Laig Dlaab for Haam Choj</a></li>
+  <li><a href="hu_plig_ntaus_kuam.htm">Hu Plig Ntaus Kuam</a></li>
+  <!-- End level 1 Nav menu links -->
+  </ul>
+</div>
+<!-- End Left Nav links-->
+</div>
+<!-- End left Nav Menu -->
+
+<!-- Start main Div, main body -->
+<div class="main">
+
+<h3>Hu Plig Ntaus Kuam</h3><br />
+
+
+
+
+<div class="player-container">
+        <audio id="audioPlayer">
+            <source src="../audio/haamchoj/hu_plig_ntaus_kuam.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+
+        <div class="timeline" onclick="seek(event)">
+        <div class="progress" id="progress"></div>
+        </div>
+
+        <div class="audio_time_row">
+            <div class="audio_time_column_l"><div class="current-time" id="current-time"> 0:00</div></div>
+            <div class="audio_time_column_r"><div class="duration" id="duration">0:00</div></div>
+        </div>
+        
+        <div class="controls">
+            <button class="audio_single" onclick="rewindAudio()">Rewind 10s</button>
+            <button class="audio_single" onclick="playAudio()">Play</button>
+            <button class="audio_single" onclick="pauseAudio()">Pause</button>
+            <button class="audio_single" onclick="forwardAudio()">Forward 10s</button>
+            &nbsp;<a href="../audio/haamchoj/hu_plig_ntaus_kuam.mp3" download="qeej_basic01"><img src="../img/button_download2.png"></a>
+        </div>
+</div> 
+
+
+<script>
+var audio = document.getElementById("audioPlayer");
+        var progress = document.getElementById("progress");
+        var durationDisplay = document.getElementById("duration");
+        var currentTimeDisplay = document.getElementById("current-time");
+
+        audio.addEventListener("timeupdate", updateProgress);
+        audio.addEventListener("loadedmetadata", displayDuration);
+
+        function playAudio() {
+            audio.play();
+        }
+
+        function pauseAudio() {
+            audio.pause();
+        }
+
+        function rewindAudio() {
+            audio.currentTime -= 10;
+        }
+
+        function forwardAudio() {
+            audio.currentTime += 10;
+        }
+
+        function updateProgress() {
+            var percentage = (audio.currentTime / audio.duration) * 100;
+            progress.style.width = percentage + "%";
+            updateCurrentTime();
+        }
+
+        function seek(event) {
+            var timelineWidth = event.currentTarget.offsetWidth;
+            var clickX = event.offsetX;
+            var newTime = (clickX / timelineWidth) * audio.duration;
+            audio.currentTime = newTime;
+        }
+
+        function displayDuration() {
+            var minutes = Math.floor(audio.duration / 60);
+            var seconds = Math.floor(audio.duration % 60);
+            if (seconds < 10) {
+                seconds = "0" + seconds;
+            }
+            durationDisplay.innerText =  minutes + ":" + seconds;
+        }
+
+        function updateCurrentTime() {
+            var minutes = Math.floor(audio.currentTime / 60);
+            var seconds = Math.floor(audio.currentTime % 60);
+            if (seconds < 10) {
+                seconds = "0" + seconds;
+            }
+            currentTimeDisplay.innerText = minutes + ":" + seconds;
+        }
+</script>
+
+   </div>
+<!-- End  main Div -->
+  </div>
+<!-- End  Wrapper Div -->
+</body>
+</html>
